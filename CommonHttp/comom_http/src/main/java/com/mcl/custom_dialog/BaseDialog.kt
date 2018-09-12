@@ -2,6 +2,7 @@ package com.mcl.custom_dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.support.annotation.LayoutRes
 import android.support.annotation.StyleRes
 import android.util.DisplayMetrics
@@ -131,11 +132,11 @@ class BaseDialog private constructor(private val mBaseDialogParams: BaseDialogPa
                     val height = dm.heightPixels
 
                     //设置新的宽度
-                    wlp.width = (width * mBaseDialogParams.widthScale).toInt()
+                    if (mBaseDialogParams.widthScale > 0)
+                        wlp.width = (width * mBaseDialogParams.widthScale).toInt()
                     //设置新的高度
-                    if (mBaseDialogParams.heightScale > 0) {
+                    if (mBaseDialogParams.heightScale > 0)
                         wlp.height = (height * mBaseDialogParams.heightScale).toInt()
-                    }
 
                     //宽度按屏幕大小的百分比设置，这里我设置的是全屏显示
                     //wlp.gravity = Gravity.BOTTOM;
@@ -170,5 +171,9 @@ class BaseDialog private constructor(private val mBaseDialogParams: BaseDialogPa
     override fun onDestroy() {
         dismiss()
         mDialog = null
+    }
+
+    override fun setOnCancelListener(onCancelListener: DialogInterface.OnCancelListener) {
+        if (null != mDialog) mDialog?.setOnCancelListener(onCancelListener)
     }
 }

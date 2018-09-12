@@ -22,7 +22,7 @@ class RxBus {
         private var mRxBus: RxBus? = null
 
         //单列模式
-        val getInstanceBus: RxBus?
+        val Instance: RxBus?
             get() {
                 if (mRxBus == null) {
                     synchronized(RxBus::class.java) {
@@ -49,8 +49,8 @@ class RxBus {
      * @param type
      * @return
     </T> */
-    private fun <T> getObservable(type: Class<T>): Flowable<T> {
-        return mSubject.toFlowable(BackpressureStrategy.BUFFER).ofType(type)
+    private fun <T> getObservable(eventType: Class<T>): Flowable<T> {
+        return mSubject.toFlowable(BackpressureStrategy.BUFFER).ofType(eventType)
     }
 
 
