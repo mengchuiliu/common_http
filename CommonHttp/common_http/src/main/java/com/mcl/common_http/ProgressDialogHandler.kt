@@ -1,4 +1,4 @@
-package com.mcl.comom_http
+package com.mcl.common_http
 
 import android.content.Context
 import android.content.DialogInterface
@@ -29,9 +29,9 @@ class ProgressDialogHandler(private val context: Context) : Handler() {
 
     private fun showProgressDialog() {
         if (mBaseDialog == null) {
-            val builder = BaseDialog.Builder(context, getProgressView())
+            val builder = BaseDialog.Builder(context, getIosProgressView())
             builder.setCancelable(cancelable)
-            builder.setCanceledOnTouchOutside(true)
+            builder.setCanceledOnTouchOutside(false)
             builder.setGravity(Gravity.CENTER)
             mBaseDialog = builder.create()
             if (cancelable) {
@@ -62,7 +62,7 @@ class ProgressDialogHandler(private val context: Context) : Handler() {
     }
 
     //获取加载框视图
-    fun getProgressView(): View {
+    private fun getProgressView(): View {
         val view = LayoutInflater.from(context).inflate(R.layout.loading_dialog, null, false)
         val spaceshipImage = view.findViewById(R.id.img) as ImageView
         val tipTextView = view.findViewById(R.id.tipTextView) as TextView// 提示文字
@@ -71,6 +71,12 @@ class ProgressDialogHandler(private val context: Context) : Handler() {
         // 使用ImageView显示动画
         spaceshipImage.startAnimation(hyperspaceJumpAnimation)
         tipTextView.text = "加载中..."// 设置加载信息
+        return view
+    }
+
+    //获取加载框视图
+    private fun getIosProgressView(): View {
+        val view = LayoutInflater.from(context).inflate(R.layout.ios_loading_dialog, null, false)
         return view
     }
 }

@@ -1,4 +1,4 @@
-package com.mcl.comom_http
+package com.mcl.common_http
 
 import android.annotation.SuppressLint
 import io.reactivex.Observable
@@ -24,7 +24,7 @@ open class HttpApi {
         const val BASE_URL = "http://192.168.31.154:2569/DuiService/"//开发测试
     }
 
-    open lateinit var apiService: ApiService
+    var apiService: ApiService
     private val timeOut = 30L
 
     init {

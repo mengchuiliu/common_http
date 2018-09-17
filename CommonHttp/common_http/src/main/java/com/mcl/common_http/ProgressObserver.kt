@@ -1,4 +1,4 @@
-package com.mcl.comom_http
+package com.mcl.common_http
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
-class ProgressObserver<T>(private val context: Context) : Observer<T>, ProgressCancelListener {
+open class ProgressObserver<T>(private val context: Context) : Observer<T>, ProgressCancelListener {
     private var mObserverListener: ObserverListener<T>? = null
     private var mProgressDialogHandler: ProgressDialogHandler? = null
     private var disposable: Disposable? = null
@@ -38,7 +38,7 @@ class ProgressObserver<T>(private val context: Context) : Observer<T>, ProgressC
     }
 
     override fun onComplete() {
-        dismissProgressDialog()
+//        dismissProgressDialog()
     }
 
     override fun onSubscribe(d: Disposable) {
@@ -48,7 +48,7 @@ class ProgressObserver<T>(private val context: Context) : Observer<T>, ProgressC
 
     override fun onNext(t: T) {
         if (mObserverListener != null) {
-            dismissProgressDialog()
+//            dismissProgressDialog()
             mObserverListener?.onNext(t)
         }
     }

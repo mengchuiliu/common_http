@@ -1,4 +1,4 @@
-package com.mcl.comom_http
+package com.mcl.common_http
 
 interface ObserverListener<T> {
     fun onNext(t: T)

@@ -9,7 +9,7 @@ import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import com.mcl.comom_http.R
+import com.mcl.common_http.R
 
 
 /**

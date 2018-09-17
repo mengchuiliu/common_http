@@ -35,5 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(':comom_http')
+    implementation project(':common_http')
+
+    implementation "com.alibaba:fastjson:1.2.49"
 }
