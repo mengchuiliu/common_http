@@ -38,7 +38,7 @@ open class ProgressObserver<T>(private val context: Context) : Observer<T>, Prog
     }
 
     override fun onComplete() {
-//        dismissProgressDialog()
+        dismissProgressDialog()
     }
 
     override fun onSubscribe(d: Disposable) {
@@ -48,7 +48,7 @@ open class ProgressObserver<T>(private val context: Context) : Observer<T>, Prog
 
     override fun onNext(t: T) {
         if (mObserverListener != null) {
-//            dismissProgressDialog()
+            dismissProgressDialog()
             mObserverListener?.onNext(t)
         }
     }
